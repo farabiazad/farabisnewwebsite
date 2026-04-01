@@ -1847,3 +1847,34 @@ a {
     color: #ffffff !important;
   }
 }
+
+/* Mobile projects scroll unlock (prevents bottom inquiry lock) */
+@media (max-width: 820px) and (hover: none) and (pointer: coarse) {
+  body.projects-page,
+  .projects-page {
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .projects-page .projects-shell {
+    min-height: 100% !important;
+  }
+
+  .projects-page .projects-main {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding-bottom: calc(28px + env(safe-area-inset-bottom)) !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .projects-page .project-panel,
+  .projects-page .inquiry-wrap,
+  .projects-page .inquiry-form {
+    overflow: visible !important;
+  }
+}
