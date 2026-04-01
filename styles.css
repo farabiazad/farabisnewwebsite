@@ -356,17 +356,26 @@ a {
 }
 
 .project-carousel-item {
-  width: clamp(210px, 24vw, 360px);
-  height: clamp(170px, 22vw, 280px);
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.project-carousel-item.is-landscape {
+  width: clamp(220px, 24vw, 360px);
+  aspect-ratio: 3 / 2;
+}
+
+.project-carousel-item.is-portrait {
+  width: clamp(150px, 17vw, 235px);
+  aspect-ratio: 3 / 4;
+}
+
 .project-carousel-item img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .project-line {
@@ -392,9 +401,8 @@ a {
 }
 
 .project-item.is-landscape img {
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
-  background: #ffffff;
 }
 
 .project-item.is-portrait {
@@ -468,8 +476,8 @@ a {
 }
 
 .placeholder-frame {
-  border: 1px solid #d6d6d6;
-  background: #ffffff;
+  border: 0;
+  background: transparent;
   border-radius: 0;
   overflow: hidden;
   display: flex;
@@ -1367,9 +1375,9 @@ a {
   }
 
   .home-page .home-photo-tile.ratio-3-2 img {
-    object-fit: contain !important;
+    object-fit: cover !important;
     object-position: center !important;
-    background: #ffffff !important;
+    background: transparent !important;
   }
 
   .home-page .home-photo-tile.ratio-3-4 img {
@@ -1447,7 +1455,7 @@ a {
   }
 
   .home-page .home-photo-tile img {
-    object-fit: contain !important;
+    object-fit: cover !important;
     object-position: center !important;
     background: transparent !important;
   }
