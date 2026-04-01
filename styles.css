@@ -5,6 +5,7 @@
   --active: #7a1f2f;
   --page-pad: 12px;
   --mosaic-gap: 10px;
+  --project-tile-height: clamp(220px, 22vw, 320px);
 }
 
 * {
@@ -357,18 +358,19 @@ a {
 
 .project-carousel-item {
   flex: 0 0 auto;
+  height: var(--project-tile-height);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .project-carousel-item.is-landscape {
-  width: clamp(220px, 24vw, 360px);
+  width: calc(var(--project-tile-height) * 1.5);
   aspect-ratio: 3 / 2;
 }
 
 .project-carousel-item.is-portrait {
-  width: clamp(150px, 17vw, 235px);
+  width: calc(var(--project-tile-height) * 0.75);
   aspect-ratio: 3 / 4;
 }
 
@@ -1283,6 +1285,10 @@ a {
 }
 
 @media (max-width: 820px) {
+  :root {
+    --project-tile-height: clamp(160px, 46vw, 220px) !important;
+  }
+
   .site-nav {
     position: fixed !important;
     top: 6px !important;
