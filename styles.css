@@ -227,7 +227,7 @@ a {
 }
 
 .home-photo-tile.ratio-3-2 {
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 4 / 3;
 }
 
 .home-photo-tile.ratio-3-4 {
@@ -365,8 +365,8 @@ a {
 }
 
 .project-carousel-item.is-landscape {
-  width: calc(var(--project-tile-height) * 1.5);
-  aspect-ratio: 3 / 2;
+  width: calc(var(--project-tile-height) * 1.333333);
+  aspect-ratio: 4 / 3;
 }
 
 .project-carousel-item.is-portrait {
@@ -399,7 +399,7 @@ a {
 }
 
 .project-item.is-landscape {
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 4 / 3;
 }
 
 .project-item.is-landscape img {
@@ -1464,5 +1464,19 @@ a {
     object-fit: cover !important;
     object-position: center !important;
     background: transparent !important;
+  }
+}
+
+@media (max-width: 820px) {
+  .projects-page .site-social {
+    display: none !important;
+  }
+
+  .projects-page .project-tab,
+  .projects-page .inquire-cta,
+  .site-social a,
+  .site-nav a,
+  button {
+    border-radius: 0 !important;
   }
 }
