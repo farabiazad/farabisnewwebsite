@@ -346,6 +346,12 @@ a {
   aspect-ratio: 3 / 2;
 }
 
+.project-item.is-landscape img {
+  object-fit: contain;
+  object-position: center;
+  background: #ffffff;
+}
+
 .project-item.is-portrait {
   aspect-ratio: 3 / 4;
 }
@@ -658,46 +664,51 @@ a {
 
   .site-nav {
     position: fixed;
-    top: 10px;
+    top: 8px;
     left: 10px;
     right: 10px;
     z-index: 220;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
-    padding: 10px;
-    border: 1px solid #ddd7cf;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(6px);
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 4px 0;
+    border: 0;
+    background: transparent;
+    backdrop-filter: none;
   }
 
   .site-nav a {
-    font-size: 0.74rem;
+    font-size: 0.76rem;
     line-height: 1.1;
     text-align: center;
-    padding: 8px 6px;
-    border: 1px solid #e4dfd7;
-    background: #fff;
+    padding: 0;
+    border: 0;
+    background: transparent;
   }
 
   .site-nav a[aria-current="page"] {
-    color: #ffffff;
-    background: var(--active);
-    border-color: var(--active);
+    color: var(--active);
+    background: transparent;
+    border-color: transparent;
+  }
+
+  .home-page {
+    overflow: hidden;
   }
 
   .home-main {
     margin-left: 0;
-    height: auto;
+    height: 100vh;
     min-height: 100vh;
-    overflow: visible;
-    padding: 92px 12px 18px;
+    overflow: hidden;
+    padding: 48px 10px 78px;
   }
 
   .home-media-layout {
     grid-template-columns: 1fr;
-    gap: 14px;
-    height: auto;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    height: calc(100vh - 126px);
   }
 
   .home-videos {
@@ -716,7 +727,7 @@ a {
   .project-item,
   .inquiry-wrap {
     border: 1px solid #dfd9cf;
-    border-radius: 14px;
+    border-radius: 0;
     background: #ffffff;
     box-shadow: 0 8px 24px rgba(17, 17, 17, 0.06);
     overflow: hidden;
@@ -727,9 +738,11 @@ a {
   }
 
   .home-carousel {
-    height: auto;
+    height: 100%;
     overflow: hidden;
     padding-right: 0;
+    display: flex;
+    align-items: center;
   }
 
   .home-carousel-track {
@@ -741,9 +754,18 @@ a {
   }
 
   .home-photo-tile {
-    width: clamp(220px, 68vw, 520px);
+    width: clamp(150px, 44vw, 240px);
     flex: 0 0 auto;
     margin-inline: 0;
+  }
+
+  .home-page .site-social {
+    position: fixed;
+    left: 10px;
+    right: 10px;
+    bottom: calc(8px + env(safe-area-inset-bottom));
+    margin: 0;
+    z-index: 210;
   }
 
   .projects-shell {
@@ -771,9 +793,9 @@ a {
     line-height: 1.15;
     text-align: center;
     padding: 10px 8px;
-    border: 1px solid #dfd9cf;
+    border: 0;
     border-radius: 999px;
-    background: #ffffff;
+    background: transparent;
   }
 
   .projects-page .project-tab.is-active {
