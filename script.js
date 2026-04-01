@@ -10,6 +10,7 @@ const panels = [...document.querySelectorAll('[data-project-panel]')];
 const projectsScroller = document.querySelector('.projects-page .projects-main');
 const inquireButton = document.querySelector('[data-inquire-btn]');
 const homeCarousels = [...document.querySelectorAll('[data-home-carousel]')];
+const projectCarousels = [...document.querySelectorAll('[data-project-carousel]')];
 
 if (tabs.length && panels.length) {
   const toggleInquireButton = (panelName) => {
@@ -145,6 +146,59 @@ if (homeCarousels.length) {
     };
 
     window.addEventListener('resize', recalcAxis);
+    window.requestAnimationFrame(animate);
+  });
+}
+
+if (projectCarousels.length) {
+  projectCarousels.forEach((carousel) => {
+    const track = carousel.querySelector('[data-project-track]');
+    if (!track) {
+      return;
+    }
+
+    const originalItems = [...track.children];
+    if (!originalItems.length) {
+      return;
+    }
+
+    originalItems.forEach((item) => {
+      track.appendChild(item.cloneNode(true));
+    });
+
+    let loopWidth = track.scrollWidth / 2;
+    let offset = 0;
+    const direction = carousel.dataset.projectDirection === 'right' ? 'right' : 'left';
+    const autoSpeedPxPerSecond = 56;
+    let lastFrameTime = 0;
+
+    const recalcLoopWidth = () => {
+      loopWidth = track.scrollWidth / 2;
+    };
+
+    const animate = (timestamp) => {
+      if (!loopWidth) {
+        recalcLoopWidth();
+      }
+
+      if (!lastFrameTime) {
+        lastFrameTime = timestamp;
+      }
+
+      const deltaSeconds = Math.min((timestamp - lastFrameTime) / 1000, 0.05);
+      lastFrameTime = timestamp;
+      offset += autoSpeedPxPerSecond * deltaSeconds;
+
+      if (loopWidth && offset >= loopWidth) {
+        offset -= loopWidth;
+      }
+
+      const translateX = direction === 'right' ? offset - loopWidth : -offset;
+      track.style.transform = `translate3d(${translateX}px, 0, 0)`;
+      window.requestAnimationFrame(animate);
+    };
+
+    window.addEventListener('resize', recalcLoopWidth);
     window.requestAnimationFrame(animate);
   });
 }
