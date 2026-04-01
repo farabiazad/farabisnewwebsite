@@ -78,6 +78,7 @@
           <form class="inquiry-form" action="https://formspree.io/f/meelyoyj" method="POST">
             <input type="hidden" name="_subject" value="New Couples Inquiry - Farabi Azad Site" />
             <input type="hidden" name="project_type" value="Couples" />
+            <p class="inquiry-rate-note">Couples sessions cost $300, elopements cost $625, wedding couples cost $800, and portraits cost $200.</p>
             <div class="inquiry-grid">
               <label class="inquiry-field">
                 <span>Name</span>
@@ -89,8 +90,14 @@
               </label>
             </div>
             <label class="inquiry-field">
-              <span>Session Details</span>
-              <textarea name="message" rows="5" placeholder="Tell me your date, location, and vision." required></textarea>
+              <span>Type of Shoot</span>
+              <select name="shoot_type" required>
+                <option value="" disabled selected>Select one</option>
+                <option value="Couples">Couples</option>
+                <option value="Elopement">Elopement</option>
+                <option value="Wedding couples">Wedding couples</option>
+                <option value="Portraits">Portraits</option>
+              </select>
             </label>
             <button class="inquiry-submit" type="submit">Send Inquiry</button>
           </form>
@@ -144,6 +151,7 @@
           <form class="inquiry-form" action="https://formspree.io/f/meelyoyj" method="POST">
             <input type="hidden" name="_subject" value="New Graduation Inquiry - Farabi Azad Site" />
             <input type="hidden" name="project_type" value="Graduation" />
+            <p class="inquiry-rate-note">My rate is $75 per person for group sessions, 2 hours long. Group sessions include time for solo portraits. Solo sessions are $150 for 2 hours.</p>
             <div class="inquiry-grid">
               <label class="inquiry-field">
                 <span>Name</span>
@@ -155,8 +163,16 @@
               </label>
             </div>
             <label class="inquiry-field">
+              <span>Type of Shoot</span>
+              <select name="shoot_type" required>
+                <option value="" disabled selected>Select one</option>
+                <option value="Solo grad photos">Solo grad photos</option>
+                <option value="Group grad photos">Group grad photos</option>
+              </select>
+            </label>
+            <label class="inquiry-field">
               <span>Session Details</span>
-              <textarea name="message" rows="5" placeholder="Tell me your school, preferred date, and location." required></textarea>
+              <textarea name="message" rows="5" placeholder="Please include your school, preferred date, location ideas, group size, and whether you will have your gown by May 1st." required></textarea>
             </label>
             <button class="inquiry-submit" type="submit">Send Inquiry</button>
           </form>

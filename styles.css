@@ -448,7 +448,8 @@ a {
 }
 
 .inquiry-field input,
-.inquiry-field textarea {
+.inquiry-field textarea,
+.inquiry-field select {
   width: 100%;
   border: 1px solid #cfcfcf;
   border-radius: 0;
@@ -460,6 +461,13 @@ a {
 
 .inquiry-field textarea {
   resize: vertical;
+}
+
+.inquiry-rate-note {
+  margin: 2px 0 2px;
+  font-size: 0.84rem;
+  line-height: 1.35;
+  color: #2a2a2a;
 }
 
 .inquiry-submit {
