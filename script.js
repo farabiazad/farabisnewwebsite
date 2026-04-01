@@ -58,7 +58,7 @@ if (tabs.length && panels.length) {
   toggleInquireButton(currentTab ? currentTab.dataset.projectTab : '');
 }
 
-if (inquireButton && projectsScroller) {
+if (inquireButton) {
   inquireButton.addEventListener('click', () => {
     const targetId = inquireButton.dataset.targetInquiry;
     if (!targetId) {
@@ -70,14 +70,14 @@ if (inquireButton && projectsScroller) {
       return;
     }
 
-    const scrollerRect = projectsScroller.getBoundingClientRect();
-    const targetRect = inquirySection.getBoundingClientRect();
-    const nextTop = projectsScroller.scrollTop + (targetRect.top - scrollerRect.top) - 10;
-    projectsScroller.scrollTo({ top: nextTop, behavior: 'smooth' });
+    inquirySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 }
 
 if (homeCarousels.length) {
+  const isTouchHorizontalTicker = () =>
+    window.matchMedia('(max-width: 820px) and (hover: none) and (pointer: coarse)').matches;
+
   homeCarousels.forEach((carousel) => {
     const track = carousel.querySelector('[data-home-track]');
     if (!track) {
@@ -93,19 +93,30 @@ if (homeCarousels.length) {
       track.appendChild(tile.cloneNode(true));
     });
 
-    let loopHeight = track.scrollHeight / 2;
+    let axis = isTouchHorizontalTicker() ? 'x' : 'y';
+    let loopSize = axis === 'x' ? track.scrollWidth / 2 : track.scrollHeight / 2;
     let offset = 0;
-    const direction = carousel.dataset.homeDirection === 'down' ? 'down' : 'up';
+    const baseDirection = carousel.dataset.homeDirection === 'down' ? 'down' : 'up';
     const autoSpeedPxPerSecond = 70;
     let lastFrameTime = 0;
 
-    const recalcLoopHeight = () => {
-      loopHeight = track.scrollHeight / 2;
+    const recalcLoopSize = () => {
+      loopSize = axis === 'x' ? track.scrollWidth / 2 : track.scrollHeight / 2;
+    };
+
+    const recalcAxis = () => {
+      const nextAxis = isTouchHorizontalTicker() ? 'x' : 'y';
+      if (nextAxis !== axis) {
+        axis = nextAxis;
+        offset = 0;
+      }
+
+      recalcLoopSize();
     };
 
     const animate = (timestamp) => {
-      if (!loopHeight) {
-        recalcLoopHeight();
+      if (!loopSize) {
+        recalcLoopSize();
       }
 
       if (!lastFrameTime) {
@@ -117,16 +128,23 @@ if (homeCarousels.length) {
 
       offset += autoSpeedPxPerSecond * deltaSeconds;
 
-      if (loopHeight && offset >= loopHeight) {
-        offset -= loopHeight;
+      if (loopSize && offset >= loopSize) {
+        offset -= loopSize;
       }
 
-      const translateY = direction === 'down' ? offset - loopHeight : -offset;
-      track.style.transform = `translateY(${translateY}px)`;
+      if (axis === 'x') {
+        const horizontalDirection = baseDirection === 'down' ? 'right' : 'left';
+        const translateX = horizontalDirection === 'right' ? offset - loopSize : -offset;
+        track.style.transform = `translate3d(${translateX}px, 0, 0)`;
+      } else {
+        const translateY = baseDirection === 'down' ? offset - loopSize : -offset;
+        track.style.transform = `translate3d(0, ${translateY}px, 0)`;
+      }
+
       window.requestAnimationFrame(animate);
     };
 
-    window.addEventListener('resize', recalcLoopHeight);
+    window.addEventListener('resize', recalcAxis);
     window.requestAnimationFrame(animate);
   });
 }
