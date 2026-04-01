@@ -1626,11 +1626,11 @@ a {
   }
 
   .home-page .home-carousel:first-child {
-    align-items: flex-end !important;
+    align-items: flex-start !important;
   }
 
   .home-page .home-carousel:last-child {
-    align-items: flex-start !important;
+    align-items: flex-end !important;
   }
 
   .home-page .home-carousel-track {
@@ -1643,11 +1643,11 @@ a {
   }
 
   .home-page .home-photo-tile.ratio-3-2 {
-    width: clamp(248px, 72vw, 460px) !important;
+    width: clamp(256px, 76vw, 480px) !important;
   }
 
   .home-page .home-photo-tile.ratio-3-4 {
-    width: clamp(165px, 49vw, 300px) !important;
+    width: clamp(170px, 52vw, 320px) !important;
   }
 
   .home-page .site-nav {
@@ -1687,6 +1687,29 @@ a {
     display: none !important;
   }
 
+  .projects-page .projects-shell {
+    padding-top: 0 !important;
+  }
+
+  .projects-page .projects-sidebar {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: auto !important;
+  }
+
+  .projects-page .site-nav {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    width: auto !important;
+    z-index: auto !important;
+    justify-content: flex-start !important;
+  }
+
   .projects-page .inquire-cta {
     display: none !important;
   }
@@ -1720,6 +1743,10 @@ a {
     padding: 8px 10px !important;
     font-size: 0.68rem !important;
     border-radius: 0 !important;
+  }
+
+  .about-page .site-social {
+    display: none !important;
   }
 }
 
