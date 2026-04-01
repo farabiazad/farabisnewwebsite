@@ -9,8 +9,7 @@ const tabs = [...document.querySelectorAll('[data-project-tab]')];
 const panels = [...document.querySelectorAll('[data-project-panel]')];
 const projectsScroller = document.querySelector('.projects-page .projects-main');
 const inquireButton = document.querySelector('[data-inquire-btn]');
-const homeCarousel = document.querySelector('[data-home-carousel]');
-const homeVideoGroups = [...document.querySelectorAll('[data-home-video-group]')];
+const homeCarousels = [...document.querySelectorAll('[data-home-carousel]')];
 
 if (tabs.length && panels.length) {
   const toggleInquireButton = (panelName) => {
@@ -78,69 +77,146 @@ if (inquireButton && projectsScroller) {
   });
 }
 
-if (homeCarousel) {
-  const track = homeCarousel.querySelector('[data-home-track]');
-
-  if (track) {
-    const originalTiles = [...track.children];
-    if (originalTiles.length) {
-      originalTiles.forEach((tile) => {
-        track.appendChild(tile.cloneNode(true));
-      });
-
-      let loopHeight = track.scrollHeight / 2;
-      let offset = 0;
-      const autoSpeedPxPerSecond = 70;
-      let lastFrameTime = 0;
-
-      const recalcLoopHeight = () => {
-        loopHeight = track.scrollHeight / 2;
-      };
-
-      const animate = (timestamp) => {
-        if (!loopHeight) {
-          recalcLoopHeight();
-        }
-
-        if (!lastFrameTime) {
-          lastFrameTime = timestamp;
-        }
-
-        const deltaSeconds = Math.min((timestamp - lastFrameTime) / 1000, 0.05);
-        lastFrameTime = timestamp;
-
-        offset += autoSpeedPxPerSecond * deltaSeconds;
-
-        if (loopHeight && offset >= loopHeight) {
-          offset -= loopHeight;
-        }
-
-        track.style.transform = `translateY(${-offset}px)`;
-        window.requestAnimationFrame(animate);
-      };
-
-      window.addEventListener('resize', recalcLoopHeight);
-      window.requestAnimationFrame(animate);
+if (homeCarousels.length) {
+  homeCarousels.forEach((carousel) => {
+    const track = carousel.querySelector('[data-home-track]');
+    if (!track) {
+      return;
     }
-  }
+
+    const originalTiles = [...track.children];
+    if (!originalTiles.length) {
+      return;
+    }
+
+    originalTiles.forEach((tile) => {
+      track.appendChild(tile.cloneNode(true));
+    });
+
+    let loopHeight = track.scrollHeight / 2;
+    let offset = 0;
+    const direction = carousel.dataset.homeDirection === 'down' ? 'down' : 'up';
+    const autoSpeedPxPerSecond = 70;
+    let lastFrameTime = 0;
+
+    const recalcLoopHeight = () => {
+      loopHeight = track.scrollHeight / 2;
+    };
+
+    const animate = (timestamp) => {
+      if (!loopHeight) {
+        recalcLoopHeight();
+      }
+
+      if (!lastFrameTime) {
+        lastFrameTime = timestamp;
+      }
+
+      const deltaSeconds = Math.min((timestamp - lastFrameTime) / 1000, 0.05);
+      lastFrameTime = timestamp;
+
+      offset += autoSpeedPxPerSecond * deltaSeconds;
+
+      if (loopHeight && offset >= loopHeight) {
+        offset -= loopHeight;
+      }
+
+      const translateY = direction === 'down' ? offset - loopHeight : -offset;
+      track.style.transform = `translateY(${translateY}px)`;
+      window.requestAnimationFrame(animate);
+    };
+
+    window.addEventListener('resize', recalcLoopHeight);
+    window.requestAnimationFrame(animate);
+  });
 }
 
-if (homeVideoGroups.length) {
-  const groupCount = homeVideoGroups.length;
-  let groupIndex = 0;
+const inquiryForms = [...document.querySelectorAll('.inquiry-form')];
 
-  const showVideoGroup = (nextGroupIndex) => {
-    groupIndex = ((nextGroupIndex % groupCount) + groupCount) % groupCount;
+if (inquiryForms.length) {
+  const thankYouMessage = 'Thanks for inquiring, I will get back to you within 48 hours.';
+  const transitionMs = 260;
 
-    homeVideoGroups.forEach((videoGroup, index) => {
-      const isActive = index === groupIndex;
-      videoGroup.classList.toggle('is-active', isActive);
+  inquiryForms.forEach((form) => {
+    const submitButton = form.querySelector('[type="submit"]');
+    const inquiryWrap = form.closest('.inquiry-wrap');
+    let statusNode = form.querySelector('.inquiry-status');
+
+    if (!statusNode) {
+      statusNode = document.createElement('p');
+      statusNode.className = 'inquiry-status';
+      statusNode.hidden = true;
+      statusNode.setAttribute('aria-live', 'polite');
+      form.appendChild(statusNode);
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      let didSubmit = false;
+
+      if (submitButton) {
+        submitButton.disabled = true;
+      }
+
+      statusNode.hidden = true;
+      statusNode.classList.remove('is-error');
+
+      if (inquiryWrap) {
+        inquiryWrap.classList.add('is-submitting');
+      }
+
+      try {
+        const response = await fetch(form.action, {
+          method: (form.method || 'POST').toUpperCase(),
+          body: new FormData(form),
+          headers: {
+            Accept: 'application/json'
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error('Request failed');
+        }
+
+        didSubmit = true;
+        form.reset();
+
+        if (inquiryWrap) {
+          const wrapHeight = inquiryWrap.offsetHeight;
+          const finalHeight = Math.max(150, Math.round(wrapHeight * 0.52));
+          inquiryWrap.style.minHeight = wrapHeight + 'px';
+          inquiryWrap.classList.add('is-exiting');
+
+          window.setTimeout(() => {
+            inquiryWrap.classList.remove('is-exiting', 'is-submitting');
+            inquiryWrap.classList.add('is-submitted');
+            inquiryWrap.style.minHeight = finalHeight + 'px';
+            inquiryWrap.innerHTML = `<p class="inquiry-thank-you" role="status" aria-live="polite">${thankYouMessage}</p>`;
+          }, transitionMs);
+
+          return;
+        }
+
+        statusNode.textContent = thankYouMessage;
+      } catch (error) {
+        statusNode.textContent = 'Something went wrong. Please try again.';
+        statusNode.classList.add('is-error');
+      } finally {
+        if (didSubmit && inquiryWrap) {
+          return;
+        }
+
+        statusNode.hidden = false;
+
+        if (submitButton) {
+          submitButton.disabled = false;
+        }
+
+        if (inquiryWrap) {
+          inquiryWrap.classList.remove('is-submitting');
+          inquiryWrap.style.minHeight = '';
+        }
+      }
     });
-  };
-
-  showVideoGroup(0);
-
-  if (groupCount > 1) {
-    window.setInterval(() => showVideoGroup(groupIndex + 1), 6000);
-  }
+  });
 }
