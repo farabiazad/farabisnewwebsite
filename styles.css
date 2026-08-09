@@ -411,6 +411,58 @@ a {
   aspect-ratio: 3 / 4;
 }
 
+.politics-community-intro {
+  min-height: clamp(250px, 34vw, 470px);
+  display: grid;
+  align-content: end;
+  gap: clamp(18px, 2.3vw, 34px);
+  padding: clamp(18px, 3vw, 42px);
+  border: 1px solid #d6d6d6;
+  background: #ffffff;
+}
+
+.politics-community-kicker {
+  color: var(--active);
+  font-size: clamp(12px, 0.95vw, 15px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.politics-community-title {
+  max-width: 18ch;
+  font-size: clamp(30px, 5.8vw, 86px);
+  line-height: 0.92;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.politics-community-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 26px);
+  max-width: 880px;
+}
+
+.politics-community-grid article {
+  border-top: 1px solid #d6d6d6;
+  padding-top: 10px;
+}
+
+.politics-community-grid h2 {
+  margin-bottom: 6px;
+  font-size: clamp(14px, 1.2vw, 18px);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.politics-community-grid p {
+  color: #2a2a2a;
+  font-size: clamp(14px, 1vw, 17px);
+  line-height: 1.25;
+  max-width: 34ch;
+}
+
 .inquiry-wrap {
   margin-top: 22px;
   padding: 14px;
@@ -630,6 +682,10 @@ a {
   }
 
   .inquiry-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .politics-community-grid {
     grid-template-columns: 1fr;
   }
 }
@@ -889,7 +945,7 @@ a {
   .projects-page .projects-tabs {
     margin-top: 2px;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
   }
 
@@ -944,6 +1000,17 @@ a {
   .project-stack,
   .project-line {
     gap: 12px;
+  }
+
+  .politics-community-intro {
+    min-height: auto;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .politics-community-title {
+    max-width: 12ch;
+    font-size: clamp(28px, 11vw, 52px);
   }
 
   body:not(.home-page):not(.projects-page) {
@@ -1826,7 +1893,7 @@ a {
   .projects-page .projects-tabs {
     margin-top: 0 !important;
     display: grid !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 10px !important;
     padding: 8px !important;
     background: #f5f3ef !important;

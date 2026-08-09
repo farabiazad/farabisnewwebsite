@@ -18,12 +18,17 @@ if (tabs.length && panels.length) {
       return;
     }
 
-    const canInquire = panelName === 'couples' || panelName === 'grads';
+    const canInquire = panelName === 'couples' || panelName === 'grads' || panelName === 'politics';
     inquireButton.hidden = !canInquire;
     inquireButton.setAttribute('aria-hidden', String(!canInquire));
 
     if (canInquire) {
-      const label = panelName === 'couples' ? 'Inquire (Couples)' : 'Inquire (Grads)';
+      const inquiryLabels = {
+        couples: 'Inquire (Couples)',
+        grads: 'Inquire (Grads)',
+        politics: 'Inquire (Politics & Community)'
+      };
+      const label = inquiryLabels[panelName];
       inquireButton.textContent = label;
       inquireButton.dataset.targetInquiry = `inquiry-${panelName}`;
     } else {

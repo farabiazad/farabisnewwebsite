@@ -24,6 +24,7 @@
       <div class="projects-tabs" role="tablist" aria-label="Project categories">
         <button id="tab-couples" class="project-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="panel-couples" data-project-tab="couples">Couples</button>
         <button id="tab-grads" class="project-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-grads" data-project-tab="grads">Grads</button>
+        <button id="tab-politics" class="project-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-politics" data-project-tab="politics">Politics &amp; Community</button>
         <button id="tab-personal" class="project-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-personal" data-project-tab="personal">Personal Projects</button>
       </div>
 
@@ -183,7 +184,63 @@
         </section>
       </section>
 
-            <section id="panel-personal" class="project-panel" role="tabpanel" aria-labelledby="tab-personal" data-project-panel="personal" hidden>
+      <section id="panel-politics" class="project-panel" role="tabpanel" aria-labelledby="tab-politics" data-project-panel="politics" hidden>
+        <section class="politics-community-intro" aria-label="Politics and community photography">
+          <p class="politics-community-kicker">Politics &amp; Community</p>
+          <h1 class="politics-community-title">Campaigns, civic work, public gatherings, and neighborhood stories.</h1>
+          <div class="politics-community-grid">
+            <article>
+              <h2>Coverage</h2>
+              <p>Documentary-style photo coverage for candidate events, community organizing, rallies, town halls, mutual aid work, and local celebrations.</p>
+            </article>
+            <article>
+              <h2>Approach</h2>
+              <p>Warm, cinematic images with a focus on people, place, emotion, and the small in-between moments that make civic life feel human.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="inquiry-politics" class="inquiry-wrap" data-inquiry-section="politics">
+          <h2 class="inquiry-title">Politics &amp; Community Inquiry</h2>
+          <form class="inquiry-form" action="https://formspree.io/f/meelyoyj" method="POST">
+            <input type="hidden" name="_subject" value="New Politics & Community Inquiry - Farabi Azad Site" />
+            <input type="hidden" name="project_type" value="Politics & Community" />
+            <p class="inquiry-rate-note">For campaign events, community gatherings, civic organizations, advocacy work, and local documentary projects. Share what you are building and what kind of coverage would help tell the story.</p>
+            <div class="inquiry-grid">
+              <label class="inquiry-field">
+                <span>Name</span>
+                <input type="text" name="name" required />
+              </label>
+              <label class="inquiry-field">
+                <span>Email</span>
+                <input type="email" name="email" required />
+              </label>
+            </div>
+            <label class="inquiry-field">
+              <span>Organization / Campaign</span>
+              <input type="text" name="organization" />
+            </label>
+            <label class="inquiry-field">
+              <span>Type of Coverage</span>
+              <select name="shoot_type" required>
+                <option value="" disabled selected>Select one</option>
+                <option value="Campaign event">Campaign event</option>
+                <option value="Community event">Community event</option>
+                <option value="Rally or public action">Rally or public action</option>
+                <option value="Portraits or press images">Portraits or press images</option>
+                <option value="Documentary project">Documentary project</option>
+              </select>
+            </label>
+            <label class="inquiry-field">
+              <span>Project Details</span>
+              <textarea name="message" rows="5" placeholder="Tell me about the date, location, people involved, timeline, and how the photos will be used." required></textarea>
+            </label>
+            <button class="inquiry-submit" type="submit">Send Inquiry</button>
+          </form>
+        </section>
+      </section>
+
+      <section id="panel-personal" class="project-panel" role="tabpanel" aria-labelledby="tab-personal" data-project-panel="personal" hidden>
         <div class="project-stack">
           <div class="project-line personal-line">
             <figure class="placeholder-frame project-item is-landscape">
