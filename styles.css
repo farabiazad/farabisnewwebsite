@@ -369,9 +369,19 @@ a {
   aspect-ratio: 4 / 3;
 }
 
+.project-carousel-item.is-wide {
+  width: calc(var(--project-tile-height) * 1.5);
+  aspect-ratio: 3 / 2;
+}
+
 .project-carousel-item.is-portrait {
   width: calc(var(--project-tile-height) * 0.75);
   aspect-ratio: 3 / 4;
+}
+
+.project-carousel-item.is-tall {
+  width: calc(var(--project-tile-height) * 0.666667);
+  aspect-ratio: 2 / 3;
 }
 
 .project-carousel-item img {
