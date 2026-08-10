@@ -26,7 +26,7 @@ if (tabs.length && panels.length) {
       const inquiryLabels = {
         couples: 'Inquire (Couples)',
         grads: 'Inquire (Grads)',
-        politics: 'Inquire (Politics & Community)'
+        politics: 'Inquire (Community & Politics)'
       };
       const label = inquiryLabels[panelName];
       inquireButton.textContent = label;

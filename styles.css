@@ -473,6 +473,33 @@ a {
   max-width: 34ch;
 }
 
+.community-video-wrap {
+  margin-top: 10px;
+  display: grid;
+  gap: 10px;
+}
+
+.community-video-title {
+  font-size: clamp(16px, 1.6vw, 24px);
+  line-height: 1;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.community-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  background: #111111;
+  object-fit: contain;
+}
+
+.community-video-note {
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.25;
+}
+
 .inquiry-wrap {
   margin-top: 22px;
   padding: 14px;
