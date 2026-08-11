@@ -230,8 +230,20 @@ a {
   aspect-ratio: 4 / 3;
 }
 
+.home-photo-tile.ratio-wide {
+  aspect-ratio: 3 / 2;
+}
+
+.home-photo-tile.ratio-pano {
+  aspect-ratio: 2 / 1;
+}
+
 .home-photo-tile.ratio-3-4 {
   aspect-ratio: 3 / 4;
+}
+
+.home-photo-tile.ratio-tall {
+  aspect-ratio: 2 / 3;
 }
 
 .projects-page {
@@ -374,6 +386,11 @@ a {
   aspect-ratio: 3 / 2;
 }
 
+.project-carousel-item.is-pano {
+  width: calc(var(--project-tile-height) * 2);
+  aspect-ratio: 2 / 1;
+}
+
 .project-carousel-item.is-portrait {
   width: calc(var(--project-tile-height) * 0.75);
   aspect-ratio: 3 / 4;
@@ -412,7 +429,12 @@ a {
   aspect-ratio: 4 / 3;
 }
 
-.project-item.is-landscape img {
+.project-item.is-wide {
+  aspect-ratio: 3 / 2;
+}
+
+.project-item.is-landscape img,
+.project-item.is-wide img {
   object-fit: cover;
   object-position: center;
 }
@@ -1601,8 +1623,20 @@ a {
     width: clamp(210px, 58vw, 340px) !important;
   }
 
+  .home-page .home-photo-tile.ratio-wide {
+    width: clamp(210px, 58vw, 340px) !important;
+  }
+
+  .home-page .home-photo-tile.ratio-pano {
+    width: clamp(250px, 72vw, 430px) !important;
+  }
+
   .home-page .home-photo-tile.ratio-3-4 {
     width: clamp(138px, 39vw, 220px) !important;
+  }
+
+  .home-page .home-photo-tile.ratio-tall {
+    width: clamp(128px, 36vw, 205px) !important;
   }
 
   .home-page .home-photo-tile img {
@@ -1666,8 +1700,20 @@ a {
     width: clamp(230px, 66vw, 390px) !important;
   }
 
+  .home-page .home-photo-tile.ratio-wide {
+    width: clamp(230px, 66vw, 390px) !important;
+  }
+
+  .home-page .home-photo-tile.ratio-pano {
+    width: clamp(280px, 78vw, 470px) !important;
+  }
+
   .home-page .home-photo-tile.ratio-3-4 {
     width: clamp(148px, 43vw, 250px) !important;
+  }
+
+  .home-page .home-photo-tile.ratio-tall {
+    width: clamp(138px, 40vw, 232px) !important;
   }
 
   .home-page .site-nav {
@@ -1758,8 +1804,20 @@ a {
     width: clamp(256px, 76vw, 480px) !important;
   }
 
+  .home-page .home-photo-tile.ratio-wide {
+    width: clamp(256px, 76vw, 480px) !important;
+  }
+
+  .home-page .home-photo-tile.ratio-pano {
+    width: clamp(310px, 88vw, 560px) !important;
+  }
+
   .home-page .home-photo-tile.ratio-3-4 {
     width: clamp(170px, 52vw, 320px) !important;
+  }
+
+  .home-page .home-photo-tile.ratio-tall {
+    width: clamp(156px, 46vw, 292px) !important;
   }
 
   .home-page .site-nav {
