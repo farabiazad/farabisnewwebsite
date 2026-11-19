@@ -45,7 +45,7 @@
       <div class="inquiry-side reveal">
         <p class="eyebrow">Inquire</p>
         <h2 class="display">Send an<br />inquiry</h2>
-        <p>Tell me a bit about what you have in mind and I'll get back to you with availability and next steps.</p><p>Looking for prices? See <a href="couples.html#inquire">couples</a> and <a href="grads.html#inquire">grads</a>.</p><p>Prefer to DM? Find me on <a href="https://www.instagram.com/farabisendthepics/" target="_blank" rel="noopener">Instagram</a> or <a href="https://www.tiktok.com/@farabisendthepics" target="_blank" rel="noopener">TikTok</a>.</p>
+        <p>Tell me a bit about what you have in mind and I'll get back to you with availability and next steps.</p><p>Looking for prices? See <a href="couples.html#inquire">couples</a> and <a href="grads.html#inquire">grads</a>.</p>
       </div>
       <form class="form reveal" action="https://formspree.io/f/meelyoyj" method="POST">
         <input type="hidden" name="_subject" value="New Inquiry - Farabi Azad Site" />
@@ -54,6 +54,11 @@
           <label class="field"><span>Name</span><input type="text" name="name" autocomplete="name" required /></label>
           <label class="field"><span>Email</span><input type="email" name="email" autocomplete="email" required /></label>
         </div>
+        <div class="form-row">
+          <label class="field"><span>Phone number</span><input type="tel" name="phone" autocomplete="tel" required /></label>
+          <label class="field"><span>Preferred date</span><input type="date" name="preferred_date" /></label>
+        </div>
+          <label class="field"><span>Social media handle</span><input type="text" name="social_handles" placeholder="@yourhandle" /></label>
           <label class="field"><span>What are you looking for?</span><select name="shoot_type" required><option value="" disabled selected>Select one</option><option value="Couples session">Couples session</option><option value="Elopement">Elopement</option><option value="Wedding">Wedding</option><option value="Portraits">Portraits</option><option value="Solo grad photos">Solo grad photos</option><option value="Group grad photos">Group grad photos</option><option value="Campaign or community event">Campaign or community event</option><option value="Something else">Something else</option></select></label>
           <label class="field"><span>Details</span><textarea name="message" rows="5" placeholder="Date, location ideas, how many people, and the vibe you're going for." required></textarea></label>
         <button class="btn btn-solid" type="submit">Send inquiry</button>

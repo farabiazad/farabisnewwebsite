@@ -125,6 +125,7 @@ a { color: inherit; }
 .meet-photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
 .meet-photo figcaption { margin-top: 10px; font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); }
 .meet-text p { max-width: 52ch; }
+.meet-text .meet-caption { margin: 0 0 14px; max-width: 54ch; font-size: 12.5px; line-height: 1.85; color: var(--muted); }
 .facts { display: grid; grid-template-columns: repeat(3, auto); gap: 16px 32px; margin: 32px 0 24px; padding-top: 24px; border-top: 1px solid var(--line); justify-content: start; }
 .facts dt { font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); }
 .facts dd { margin: 4px 0 0; }
@@ -283,6 +284,7 @@ a { color: inherit; }
 }
 .field select { appearance: none; cursor: pointer; background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%); background-position: right 6px center, right 0 center; background-size: 6px 6px; background-repeat: no-repeat; }
 .field select option { background: var(--bg); }
+.field input { color-scheme: dark; }
 .field textarea { resize: vertical; min-height: 120px; }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--red); }
 .form .btn { justify-self: start; cursor: pointer; font-family: var(--mono); }
