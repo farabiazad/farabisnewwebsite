@@ -3,70 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Farabi Azad | About</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>About — Farabi Azad Photography</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
 </head>
-<body class="about-page">
-  <header class="site-nav" aria-label="Main navigation">
-    <a href="index.html">Home</a>
-    <a href="projects.html">Projects</a>
-    <a href="about.html" aria-current="page">About</a>
+<body id="top">
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav" data-nav>
+    <a class="nav-mark" href="index.html" aria-label="Farabi Azad home">
+      <span class="mark-big">FA</span>
+      <span class="mark-small">sendthepics</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-nav-toggle>
+      <span></span><span></span>
+    </button>
+    <nav class="nav-links" data-nav-links>
+      <a href="index.html">Home</a>
+      <a href="couples.html">Couples</a>
+      <a href="grads.html">Grads</a>
+      <a href="community.html">Community</a>
+      <a href="about.html" aria-current="page">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </header>
 
-  <div class="site-social" aria-label="Social links">
-    <span class="site-logo">farabisendthepics</span>
-    <a href="https://www.instagram.com/farabisendthepics/" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://www.tiktok.com/@farabisendthepics" target="_blank" rel="noopener">TikTok</a>
-  </div>
-
-  <main class="page page-offset">
-    <div class="about-layout">
-      <section>
-        <p class="about-intro">
-          Hi! I'm Farabi, a documentary-style photographer. I focus on pictures that look like scenes from old movies for a retro, cinematic-look. I would love to work with you!
-        </p>
-
-        <div class="about-columns">
-          <article class="about-block">
-            <h2>Education</h2>
-            <ul>
-              <li>New York University</li>
-            </ul>
-          </article>
-
-          <article class="about-block">
-            <h2>Based In</h2>
-            <ul>
-              <li>NYC</li>
-            </ul>
-          </article>
-
-          <article class="about-block">
-            <h2>Focus</h2>
-            <ul>
-              <li>Couples Work</li>
-              <li>Graduation Photos</li>
-            </ul>
-          </article>
-
-          <article class="about-block">
-            <h2>Available For</h2>
-            <ul>
-              <li>On-location sessions in NYC</li>
-              <li>Couples and grad shoots</li>
-            </ul>
-            <div class="about-contact-links" aria-label="Social links">
-              <a class="about-contact-btn" href="https://www.tiktok.com/@farabisendthepics" target="_blank" rel="noopener">TikTok</a>
-              <a class="about-contact-btn" href="https://www.instagram.com/farabisendthepics/" target="_blank" rel="noopener">Instagram</a>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <figure class="about-photo">
-        <img src="images/about/about-01.jpg" alt="Farabi holding a Polaroid camera" />
+  <main>
+    <section class="meet" style="padding-top: clamp(130px, 14vw, 200px);">
+      <figure class="meet-photo reveal">
+        <img src="img/about.jpg" alt="Farabi framing a shot with a Polaroid camera" />
+        <figcaption>Farabi Azad · @farabisendthepics</figcaption>
       </figure>
-    </div>
+      <div class="meet-text reveal">
+        <p class="eyebrow">About</p>
+        <h1 class="display">Hey! I'm Farabi</h1>
+        <p>I'm a documentary-style photographer based in New York. I focus on pictures that look like scenes from old movies, for a retro, cinematic look.</p>
+        <p>Couples, graduates, campaigns, community events: whatever it is, I want your photos to look like the opening scene of your own movie. I would love to work with you!</p>
+        <div class="about-grid">
+          <div><h3>Education</h3><p>New York University</p></div>
+          <div><h3>Based in</h3><p>NYC</p></div>
+          <div><h3>Focus</h3><p>Couples work<br />Graduation photos<br />Community &amp; politics</p></div>
+          <div><h3>Available for</h3><p>On-location sessions in NYC<br />Couples and grad shoots</p></div>
+        </div>
+        <a class="btn btn-solid" href="contact.html" style="margin-top: 32px;">Work with me</a>
+      </div>
+    </section>
+
+    <a class="next" href="contact.html">
+      <p class="eyebrow">Next</p>
+      <p class="display">Contact →</p>
+    </a>
   </main>
+
+  <footer class="footer">
+    <span>© 2026 Farabi Azad</span>
+    <span class="footer-links">
+      <a href="https://www.instagram.com/farabisendthepics/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.tiktok.com/@farabisendthepics" target="_blank" rel="noopener">TikTok</a>
+    </span>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <script src="site.js"></script>
 </body>
 </html>

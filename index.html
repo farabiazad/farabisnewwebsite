@@ -3,102 +3,175 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>@farabisendthepics | Home</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Farabi Azad — Photography</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
 </head>
-<body class="home-page">
-  <header class="site-nav" aria-label="Main navigation">
-    <a class="nav-social nav-social-tiktok" href="https://www.tiktok.com/@farabisendthepics" target="_blank" rel="noopener" aria-label="TikTok">
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="M14 3h3.1c.2 1.7 1.2 3 2.9 3.5V9c-1.8 0-3.5-.6-4.9-1.7v7.4a5.6 5.6 0 1 1-4.8-5.6v2.8a2.8 2.8 0 1 0 2 2.7V3z"></path>
-      </svg>
+<body id="top">
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <header class="nav" data-nav>
+    <a class="nav-mark" href="index.html" aria-label="Farabi Azad home">
+      <span class="mark-big">FA</span>
+      <span class="mark-small">sendthepics</span>
     </a>
-    <a href="index.html" aria-current="page">Home</a>
-    <a href="projects.html">Projects</a>
-    <a href="about.html">About</a>
-    <a class="nav-social nav-social-instagram" href="https://www.instagram.com/farabisendthepics/" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <rect x="4" y="4" width="16" height="16" rx="4" ry="4" fill="none" stroke="currentColor" stroke-width="1.8"></rect>
-        <circle cx="12" cy="12" r="3.8" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
-        <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"></circle>
-      </svg>
-    </a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-nav-toggle>
+      <span></span><span></span>
+    </button>
+    <nav class="nav-links" data-nav-links>
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="couples.html">Couples</a>
+      <a href="grads.html">Grads</a>
+      <a href="community.html">Community</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </header>
 
-  <div class="site-social" aria-label="Social links">
-    <span class="site-logo">farabisendthepics</span>
-    <a href="https://www.instagram.com/farabisendthepics/" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://www.tiktok.com/@farabisendthepics" target="_blank" rel="noopener">TikTok</a>
-  </div>
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <img class="hero-img" src="img/hero.jpg" alt="Woman in a red-lit doorway, man looking on behind her" />
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <p class="eyebrow">Documentary photography · NYC</p>
+        <h1 class="hero-title">Farabi&nbsp;Azad</h1>
+        <p class="hero-tag">Like a scene from an old movie.</p>
+      </div>
+      <a class="scroll-cue" href="#about" aria-label="Scroll down">Scroll</a>
+    </section>
 
-  <main class="home-main" aria-label="Home media">
-    <section class="home-media-layout">
-      <section class="home-carousel home-carousel-left" data-home-carousel data-home-direction="down" aria-label="Photo carousel left">
-        <div class="home-carousel-track" data-home-track>
-          <figure class="placeholder-frame home-photo-tile ratio-3-2">
-            <img src="images/home-left/left-01.jpg" alt="Left carousel photo 01" />
-          </figure>
-          <figure class="placeholder-frame home-photo-tile ratio-3-4">
-            <img src="images/home-left/left-02.jpg" alt="Left carousel photo 02" loading="lazy" />
-          </figure>
-          <figure class="placeholder-frame home-photo-tile ratio-wide">
-            <img src="images/home-left/left-03.jpg" alt="Left carousel photo 03" loading="lazy" />
-          </figure>
-          <figure class="placeholder-frame home-photo-tile ratio-3-2">
-            <img src="images/home-left/left-04.jpg" alt="Left carousel photo 04" loading="lazy" />
-          </figure>
-          <figure class="placeholder-frame home-photo-tile ratio-3-2">
-            <img src="images/home-left/left-05.jpg" alt="Left carousel photo 05" loading="lazy" />
-          </figure>
-          <figure class="placeholder-frame home-photo-tile ratio-tall">
-            <img src="images/home-left/left-06.jpg" alt="Left carousel photo 06" loading="lazy" />
-          </figure>
-          <figure class="placeholder-frame home-photo-tile ratio-3-4">
-            <img src="images/home-left/left-07.png" alt="Left carousel photo 07" loading="lazy" />
-          </figure>
-          <figure class="placeholder-frame home-photo-tile ratio-wide">
-            <img src="images/home-left/left-08.png" alt="Left carousel photo 08" loading="lazy" />
-          </figure>
-          <figure class="placeholder-frame home-photo-tile ratio-3-2">
-            <img src="images/home-left/left-09.jpg" alt="Left carousel photo 09" loading="lazy" />
-          </figure>
-        </div>
-      </section>
+    <!-- MEET -->
+    <section class="meet" id="about">
+      <figure class="meet-photo reveal">
+        <img src="img/about.jpg" alt="Farabi framing a shot with a Polaroid camera" loading="lazy" />
+        <figcaption>Photos by IG: @farabisendthepics</figcaption>
+      </figure>
+      <div class="meet-text reveal">
+        <p class="eyebrow">Meet the photographer</p>
+        <h2 class="display">Hey! I'm Farabi</h2>
+        <p>
+          I'm a documentary-style photographer based in New York. I chase pictures that feel like
+          stills from old films — warm, a little grainy, and full of the in-between moments
+          people forget happened.
+        </p>
+        <p>
+          Couples, graduates, campaigns, community events: whatever it is, I want your photos to
+          look like the opening scene of your own movie.
+        </p>
+        <dl class="facts">
+          <div><dt>Based in</dt><dd>NYC</dd></div>
+          <div><dt>Studied at</dt><dd>New York University</dd></div>
+          <div><dt>Shooting</dt><dd>Couples · Grads · Community</dd></div>
+        </dl>
+        <a class="btn" href="about.html">Read more</a>
+      </div>
+    </section>
 
-      <section class="home-carousel" data-home-carousel data-home-direction="up" aria-label="Photo carousel right">
-        <div class="home-carousel-track" data-home-track>
-          <figure class="placeholder-frame home-photo-tile ratio-3-4">
-            <img src="images/home/home-01.jpg" alt="Home photo 01" />
-          </figure>
-          <figure class="placeholder-frame home-photo-tile ratio-pano">
-            <img src="images/home/home-02.jpg" alt="Home photo 02" loading="lazy" />
-          </figure>
-          <figure class="placeholder-frame home-photo-tile ratio-tall">
-            <img src="images/home/home-03.jpg" alt="Home photo 03" loading="lazy" />
-          </figure>
-          <figure class="placeholder-frame home-photo-tile ratio-pano">
-            <img src="images/home/home-04.jpg" alt="Home photo 04" loading="lazy" />
-          </figure>
-          <figure class="placeholder-frame home-photo-tile ratio-3-4">
-            <img src="images/home/home-05.jpg" alt="Home photo 05" loading="lazy" />
-          </figure>
-          <figure class="placeholder-frame home-photo-tile ratio-wide">
-            <img src="images/home/home-06.jpg" alt="Home photo 06" loading="lazy" />
-          </figure>
-          <figure class="placeholder-frame home-photo-tile ratio-tall">
-            <img src="images/home/home-07.jpg" alt="Home photo 07" loading="lazy" />
-          </figure>
-          <figure class="placeholder-frame home-photo-tile ratio-wide">
-            <img src="images/home/home-08.jpg" alt="Home photo 08" loading="lazy" />
-          </figure>
-          <figure class="placeholder-frame home-photo-tile ratio-tall">
-            <img src="images/home/home-09.jpg" alt="Home photo 09" loading="lazy" />
-          </figure>
+    <!-- WORK -->
+    <section class="work" id="work" aria-label="Selected work">
+      <a class="work-tile reveal" href="couples.html">
+        <img src="img/couples.jpg" alt="Two people reading books on a stoop bench" loading="lazy" />
+        <span class="work-num">01</span>
+        <span class="work-title">Couples</span>
+        <span class="work-meta">Sessions · Elopements · Weddings</span>
+      </a>
+      <a class="work-tile reveal" href="grads.html">
+        <img src="img/grads.jpg" alt="Graduate in sunglasses raising a cap by a clock tower" loading="lazy" />
+        <span class="work-num">02</span>
+        <span class="work-title">Grads</span>
+        <span class="work-meta">Solo · Small groups · Big groups</span>
+      </a>
+      <a class="work-tile reveal" href="community.html">
+        <img src="img/community.jpg" alt="Photographer shooting a portrait inside a corner diner" loading="lazy" />
+        <span class="work-num">03</span>
+        <span class="work-title">Community &amp; Politics</span>
+        <span class="work-meta">Campaigns · Rallies · Neighborhood stories</span>
+      </a>
+      <a class="work-tile reveal" href="personal.html">
+        <img src="img/personal.jpg" alt="Two friends walking out of the ocean" loading="lazy" />
+        <span class="work-num">04</span>
+        <span class="work-title">Personal</span>
+        <span class="work-meta">On film, off the clock</span>
+      </a>
+    </section>
+
+    <!-- FILM STRIP -->
+    <section class="strip" aria-label="Recent frames">
+      <div class="strip-head">
+        <p class="eyebrow">Recent frames</p>
+        <span class="strip-rule"></span>
+      </div>
+      <div class="strip-track" data-strip>
+        <img src="img/strip-c02.jpg" alt="" loading="lazy" />
+        <img src="img/strip-g05.jpg" alt="" loading="lazy" />
+        <img src="img/strip-c05.jpg" alt="" loading="lazy" />
+        <img src="img/strip-h07.jpg" alt="" loading="lazy" />
+        <img src="img/strip-g03.jpg" alt="" loading="lazy" />
+        <img src="img/strip-c03.jpg" alt="" loading="lazy" />
+        <img src="img/strip-c06.jpg" alt="" loading="lazy" />
+        <img src="img/strip-g07.jpg" alt="" loading="lazy" />
+        <img src="img/strip-c10.jpg" alt="" loading="lazy" />
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" aria-label="Testimonials">
+      <div class="t-text reveal">
+        <p class="eyebrow">Testimonials</p>
+        <div class="t-slides" data-slides>
+          <blockquote class="t-slide is-active">
+            <p>"[Placeholder] Paste a real quote from a couple you've shot here — what it felt like on the day, and how the photos came out."</p>
+            <cite>— Client name</cite>
+          </blockquote>
+          <blockquote class="t-slide">
+            <p>"[Placeholder] A grad client's quote goes here. Short and specific reads best: one or two sentences."</p>
+            <cite>— Client name, school</cite>
+          </blockquote>
+          <blockquote class="t-slide">
+            <p>"[Placeholder] A campaign or organizer quote goes here, about working with you at an event."</p>
+            <cite>— Organizer, organization</cite>
+          </blockquote>
         </div>
-      </section>
+        <div class="t-controls">
+          <button type="button" aria-label="Previous testimonial" data-prev>←</button>
+          <span class="t-count" data-count>01 / 03</span>
+          <button type="button" aria-label="Next testimonial" data-next>→</button>
+        </div>
+      </div>
+      <figure class="t-photo reveal">
+        <img src="img/quote.jpg" alt="Couple kissing beside the sailboat pond in Central Park" loading="lazy" />
+      </figure>
+    </section>
+
+    <!-- BIG LINE -->
+    <section class="statement">
+      <p class="statement-text reveal">"Every frame,<br />a scene from<br />an old movie."</p>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" id="contact">
+      <img class="cta-img" src="img/cta.jpg" alt="" loading="lazy" />
+      <div class="cta-shade"></div>
+      <div class="cta-content reveal">
+        <h2 class="display">Let's document<br />your story</h2>
+        <a class="btn btn-solid" href="contact.html">Inquire</a>
+      </div>
     </section>
   </main>
 
-  <script src="script.js"></script>
+  <footer class="footer">
+    <span>© 2026 Farabi Azad</span>
+    <span class="footer-links">
+      <a href="https://www.instagram.com/farabisendthepics/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.tiktok.com/@farabisendthepics" target="_blank" rel="noopener">TikTok</a>
+    </span>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <script src="site.js"></script>
 </body>
 </html>
