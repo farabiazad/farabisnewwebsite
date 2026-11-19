@@ -99,3 +99,68 @@ if (gallery.length) {
     if (e.key === "ArrowRight") open(cur + 1);
   });
 }
+
+// Inquiry forms: send to Formspree in the background and show a
+// confirmation on the page instead of redirecting to formspree.io
+document.querySelectorAll("form.form").forEach((form) => {
+  const button = form.querySelector('button[type="submit"]');
+  const status = document.createElement("p");
+  status.className = "form-error";
+  status.setAttribute("role", "alert");
+  status.hidden = true;
+  form.appendChild(status);
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    status.hidden = true;
+    button.disabled = true;
+    const label = button.textContent;
+    button.textContent = "Sending…";
+
+    let res;
+    try {
+      res = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+    } catch (err) {
+      res = null; // network problem: show the error below
+    }
+
+    // Formspree refused the background send (e.g. its spam check is on):
+    // fall back to a normal submit so the inquiry is never lost.
+    if (res && !res.ok) {
+      HTMLFormElement.prototype.submit.call(form);
+      return;
+    }
+
+    try {
+      if (!res) throw new Error("Network error");
+
+      const name = (form.elements.name?.value || "").trim().split(" ")[0];
+      const email = (form.elements.email?.value || "").trim();
+      const done = document.createElement("div");
+      done.className = "form-received";
+      done.setAttribute("role", "status");
+      done.tabIndex = -1;
+      done.innerHTML = `
+        <span class="received-mark" aria-hidden="true">✓</span>
+        <p class="eyebrow">Inquiry received</p>
+        <h3 class="received-title"></h3>
+        <p class="received-text"></p>`;
+      done.querySelector(".received-title").textContent = name ? `Thank you, ${name}!` : "Thank you!";
+      done.querySelector(".received-text").textContent = email
+        ? `Your inquiry was sent. You'll hear back soon at ${email}.`
+        : "Your inquiry was sent. You'll hear back soon.";
+      form.replaceWith(done);
+      done.focus({ preventScroll: true });
+      done.scrollIntoView({ behavior: "smooth", block: "center" });
+    } catch (err) {
+      button.disabled = false;
+      button.textContent = label;
+      status.textContent = "Something went wrong and your inquiry wasn't sent. Please try again.";
+      status.hidden = false;
+    }
+  });
+});
