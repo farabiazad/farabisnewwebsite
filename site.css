@@ -288,6 +288,13 @@ a { color: inherit; }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--red); }
 .form .btn { justify-self: start; cursor: pointer; font-family: var(--mono); }
 
+/* couples films */
+.films { padding: clamp(80px, 10vw, 140px) var(--gutter) 0; }
+.film-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 28px; }
+.film { margin: 0; }
+.film video { display: block; width: 100%; height: auto; background: #000; }
+.film figcaption { margin-top: 12px; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); }
+
 /* video */
 .video-wrap { padding: 0 var(--gutter) clamp(40px, 6vw, 80px); }
 .video-wrap video { width: 100%; max-height: 80vh; background: #000; }
