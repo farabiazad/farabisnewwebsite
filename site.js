@@ -18,6 +18,21 @@ if (toggle && links) {
   });
 }
 
+// Mobile: floating "Book a session" button that jumps to the inquiry form
+const inquire = document.getElementById("inquire");
+if (inquire) {
+  const jump = document.createElement("a");
+  jump.className = "book-jump is-hidden";
+  jump.href = "#inquire";
+  jump.textContent = "Book a session";
+  document.body.appendChild(jump);
+  let formInView = false;
+  const update = () => jump.classList.toggle("is-hidden", formInView || window.scrollY < 120);
+  new IntersectionObserver(([e]) => { formInView = e.isIntersecting; update(); }).observe(inquire);
+  window.addEventListener("scroll", update, { passive: true });
+  update();
+}
+
 // Fade elements in as they scroll into view
 const io = new IntersectionObserver(
   (entries) =>

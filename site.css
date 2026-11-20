@@ -64,7 +64,15 @@ a { color: inherit; }
   padding: 22px var(--gutter);
   transition: background 0.4s, padding 0.4s;
 }
-.nav.is-scrolled { background: rgba(10, 9, 8, 0.88); padding-block: 14px; backdrop-filter: blur(6px); }
+/* The blur lives on a pseudo-element: a backdrop-filter on .nav itself would
+   trap the full-screen mobile menu inside the bar (cutting off its top links). */
+.nav::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: rgba(10, 9, 8, 0.88); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  opacity: 0; transition: opacity 0.4s;
+}
+.nav.is-scrolled { padding-block: 14px; }
+.nav.is-scrolled::before { opacity: 1; }
 .nav-mark { text-decoration: none; display: flex; flex-direction: column; align-items: center; line-height: 1; }
 .mark-word { font-family: var(--display); font-size: clamp(20px, 2vw, 26px); color: var(--red); letter-spacing: 0.02em; }
 .nav-links { display: flex; gap: clamp(20px, 3.2vw, 48px); }
@@ -358,6 +366,7 @@ a { color: inherit; }
     opacity: 0; pointer-events: none; transition: opacity 0.4s;
   }
   .nav-links.is-open { opacity: 1; pointer-events: auto; }
+  .nav-links { height: 100vh; height: 100dvh; }
   .nav-links a { font-size: 14px; }
   .meet, .testimonials { grid-template-columns: 1fr; }
   .work { grid-template-columns: 1fr; }
@@ -369,3 +378,16 @@ a { color: inherit; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* Jump-to-booking button (pages with an inquiry form) */
+#inquire { scroll-margin-top: 80px; }
+.book-jump {
+  position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 40;
+  padding: 14px 20px; border-radius: 999px;
+  background: var(--red); color: var(--ink); text-decoration: none;
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  transition: opacity 0.3s, transform 0.3s;
+}
+.book-jump.is-hidden { opacity: 0; transform: translateY(12px); pointer-events: none; }
+@media (min-width: 821px) { .book-jump { display: none; } }
