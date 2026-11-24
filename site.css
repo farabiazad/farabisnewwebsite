@@ -245,7 +245,7 @@ a { color: inherit; }
 /* masonry gallery */
 .gallery { columns: 3 320px; column-gap: 14px; padding: 0 var(--gutter); }
 .gallery figure { margin: 0 0 14px; break-inside: avoid; overflow: hidden; }
-.gallery img { width: 100%; cursor: zoom-in; transition: transform 0.9s ease, filter 0.5s; filter: saturate(0.92); }
+.gallery img { width: 100%; height: auto; cursor: zoom-in; transition: transform 0.9s ease, filter 0.5s; filter: saturate(0.92); }
 .gallery img:hover { transform: scale(1.03); filter: saturate(1.05); }
 .gallery img:focus-visible { outline: 2px solid var(--red); outline-offset: -2px; }
 
